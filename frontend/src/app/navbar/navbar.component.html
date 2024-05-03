@@ -1,0 +1,38 @@
+<header>
+    <nav>
+        <div class="nav-left">
+            <h1 [routerLink]="['/home']">Utopia</h1>
+        </div>
+        <div class="nav-middle">
+            <div class="search">
+                <div class="search-icon"><i class='bx bx-search bx-sm'></i></div>
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="notification"><i class='bx bx-bell bx-sm'></i>
+                <div class="notify">5</div>
+            </div>
+            <div class="notification" (click)="changetheme()">@if(dark){<i class='bx bxs-sun bx-sm'></i>}
+                @else{
+                    <i class='bx bxs-moon bx-sm'></i>
+                } 
+            </div>
+            <div class="user">
+                <div class="user-picture">
+                    <img [src]="profile_img">
+                </div>
+            </div>
+        </div>
+        <!--------push notification---------->
+        <div class="push-notification" [class]="show?shownotify:''">
+          <h3>{{push_message}}</h3>
+        </div>
+        <!--------push notification---------->
+    </nav>
+</header>
+<section>
+    <router-outlet></router-outlet>
+</section>
+
+

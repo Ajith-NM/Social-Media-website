@@ -1,0 +1,14 @@
+.app-component{
+    background-color: var(--bg-color);
+    scroll-behavior: smooth;
+}
+@media(max-width:448px){
+    .app-component{
+        width: 120%;
+    }
+}
+@media(max-width:337px){
+    .app-component{
+        width: 124%;
+    }
+}

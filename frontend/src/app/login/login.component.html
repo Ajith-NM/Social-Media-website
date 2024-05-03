@@ -1,0 +1,60 @@
+<div class="main-container">
+    <div class="signup" [class]="login?'':active">
+        <form action="" [formGroup]="signup" (ngSubmit)="signup.valid&&onSignup()">
+            <div class="profile">
+                <div class="profile-img">
+                    <img [src]="signup_img" alt="">
+                </div>
+
+                <div class="round">
+                    <input type="file" (change)="upload($event)">
+                    <i class='bx bxs-camera-plus'></i>
+                </div>
+            </div>
+            <h1>Create Account</h1>
+            <div class="input-tag"> <span><i class='bx bxs-user-plus'></i></span><input type="text"
+                    placeholder="Username" formControlName="username" required></div>
+            <div class="input-tag"><span><i class='bx bxs-envelope'></i></span><input type="email" placeholder="Email"
+                formControlName="email"   required></div>
+            <div class="input-tag password"><span><i class='bx bxs-lock-alt'></i></span><input [type]="type"
+                    placeholder="Password" formControlName="password" required> <span (click)="showPassword()">@if(show){hide} @else{show}
+                </span></div>
+
+            <div class="button-login">
+                <button type="submit" >sign Up</button>
+                <p (click)="showLogin()">Already a user? Login</p>
+                <span>{{err_msg}}</span>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+    <div class="login" [class]="login?active:''">
+        <form action=""  [formGroup]="loginForm" (ngSubmit)="loginForm.valid&&onLogin()">
+            <div class="profile">
+                <div class="profile-img">
+                    <img [src]="signup_img" alt="">
+                </div>
+            </div>
+            <h1> Login Now</h1>
+            <div class="input-tag"> <span><i class='bx bxs-user-plus'></i></span><input type="text"
+                    placeholder="Username" formControlName="username" required></div>
+            <div class="input-tag"><span><i class='bx bxs-envelope'></i></span><input type="email" placeholder="Email"
+                formControlName="email"   required></div>
+            <div class="input-tag password"><span><i class='bx bxs-lock-alt'></i></span><input [type]="type"
+                    placeholder="Password" formControlName="password" required> <span (click)="showPassword()">@if(show){hide} @else{show}
+                </span></div>
+
+            <div class="button-login">
+                <button type="submit">Login</button>
+                <p (click)="showLogin()">Create an account?signup</p>
+                <span>{{err_msg}}</span>
+            </div>
+        </form>
+    </div>
+
+</div>
+

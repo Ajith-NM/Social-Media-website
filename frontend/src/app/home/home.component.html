@@ -1,0 +1,57 @@
+<section>
+    <div class="left-sidebar">
+        <div class="container">
+            <div class="user-profile" [routerLink]="['/home/profile']">
+                <div class="profile">
+                    <div class="profile-pic">
+                        <img [src]="profile_img">
+                    </div>
+
+                </div>
+                <div class="user-details">
+                    <h3>{{username}}</h3>
+                </div>
+
+            </div>
+            <hr>
+            <div class="sidebar">
+                <a [class]="activated[0]?active:''" (click)="activate(0)" [routerLink]="['/home']"><span><i
+                            class='bx bx-home bx-sm'></i></span>
+                    <h3>home</h3>
+                </a>
+                <a [class]="activated[1]?active:''" (click)="activate(1)"
+                    [routerLink]="['/home/videos/videos']"><span><i class='bx bxs-videos bx-sm'></i></span>
+                    <h3>Explore</h3>
+                </a>
+                <a [class]="activated[2]?active:''" (click)="activate(2)" [routerLink]="['/home/friends']"><span><i
+                            class='bx bxs-user-detail bx-sm'></i></span>
+                    <h3>Friends</h3>
+                </a>
+                <a [class]="activated[3]?active:''" (click)="activate(3)" [routerLink]="['/home/message']"><span><i
+                            class='bx bx-send bx-sm'></i>
+                        <div class="message-notification" [class]="clicked?notify:''"></div>
+                    </span>
+                    <h3>Messages</h3>
+                </a>
+
+                <a [class]="activated[4]?active:''" (click)="activate(4)" [routerLink]="['/home/videos/saved']"><span><i
+                            class='bx bx-bookmark bx-sm'></i></span>
+                    <h3>Saved</h3>
+                </a>
+                <a [class]="activated[5]?active:''" (click)="activate(5)" [routerLink]="['/home/profile']"><span><i
+                            class='bx bx-cog bx-sm'></i></span>
+                    <h3>Settings</h3>
+                </a>
+                <a [class]="activated[6]?active:''" (click)="activate(6)" [routerLink]="['/']"><span><i
+                            class='bx bx-log-out bx-sm'></i></span>
+                    <h3>LogOut</h3>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="main-container">
+        <router-outlet></router-outlet>
+    </div>
+</section>

@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@700&family=Roboto:ital,wght@0,400;1,100&display=swap');
+
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  text-decoration: none;
+}
+:root{
+  --bg-color:#fff;
+  --nav-icon-bg-color:rgba(0,0,0,.08);
+  --nav-icon-color:#000;
+  --box-color:aliceblue;
+  --icon-color:#535353f0;
+  --text-color:#000;
+  --active:rgba(0, 0, 0, .06);
+  --border:#cecece;
+  --message:#44c8ec;
+}
+.dark-theme{
+  --bg-color:rgb(39, 45, 53);
+  --nav-icon-bg-color:rgba(0,0,0,.2);
+  --nav-icon-color:#cecece;
+  --box-color:rgb(39,52,67);
+  --icon-color:#cecece;
+  --text-color:#fff;
+  --active:rgba(0, 0, 0, .09);
+  --border:rgb(39,52,67);
+  --message: #0c6178;
+}
+body{
+  background-color: var(--bg-color);
+  scroll-behavior: smooth;
+}
+body::-webkit-scrollbar {
+  width: 0px;
+
+
+}
+.notify {
+  position: absolute;
+  color:#fff;
+  font-size: smaller;
+  width: 18px;
+  height: 18px;
+  /* padding-top: 2px; */
+  background-color: rgb(202, 33, 33);
+  border-radius: 50%;
+  top: 0;
+  right: 0;
+}
+hr {
+  height: 1px;
+  background:linear-gradient( #00ffff27, #ff00c352);
+  margin:10px 20px;
+}

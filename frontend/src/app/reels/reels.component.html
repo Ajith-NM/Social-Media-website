@@ -1,0 +1,258 @@
+<div class="container">
+
+
+    @for(post of allPosts;track allPosts;let i=$index){
+    @if(posts=="videos"){
+    @if(post.post_type=="video/mp4"){
+    <div class="post">
+        <div class="post-user">
+            <div class="post-user-flw">
+                <div class="profile">
+                    <img src="data:{{post.user.profile_ext}};base64,{{post.user.profile_img}}">
+
+                </div>
+                <div class="post-username">
+                    <h4>{{post.user.username}}
+
+                        <span class="follow">
+                           
+                            @if(friends_id.indexOf(post.user._id)!=-1){
+                            <h4 (click)="follow(post.user._id) ">.Following</h4>
+                            }
+                            @else if(post.user._id!=userid){
+                            <h4 (click)="follow(post.user._id)">.Follow</h4>
+                            }
+                            @else{
+                            @if(post.user._id!=userid){
+                            <span class="follow">
+                                <h4 (click)="follow(post.user._id) ">.Follow</h4>
+                            </span>
+
+                            }
+                        }
+                            
+                        </span>
+
+
+                    </h4>
+                    <h5>{{post.date| date}}</h5>
+                </div>
+
+            </div>
+            <div class="more-options" (click)="seeoptions()"><i class='bx bx-dots-vertical-rounded bx-sm'></i>
+                <div class="options" [class]="more_options?moreoptions:''">
+                    <div class="option"><a href="assets/images/user3.jpg" download><span><i
+                                    class='bx bxs-download'></i></span>download</a></div>
+                    <div class="option"><span><i class='bx bx-share-alt'></i></span>share</div>
+
+                </div>
+            </div>
+
+        </div>
+        <hr>
+        <div class="post-content">
+            {{post.text}}
+        </div>
+        <div class="post-img">
+            <video src="data:{{post.post_type}};base64,{{post.post_image}}" controls></video>
+        </div>
+        <div class="cmnt-save-like">
+            <div class="cmnt-like"><span>
+                @if(user_liked_posts.indexOf(post._id)!=-1){
+                    <i class='bx bxs-heart bx-sm' style="color: rgb(217,24,24);"  (click)="addLike(post._id)"></i>
+                    }
+                    @else{
+                        <i class='bx bx-heart bx-sm' (click)="addLike(post._id)"></i>
+                    }
+                {{post.liked_Users}}</span>
+                        
+                        
+                        <span (click)="addComment(post._id)"><i
+                        class='bx bx-comment bx-sm' (click)="addComment(post._id)"></i>{{post.comments}}
+                </span></div>
+            <span>
+                 @if(user_saved_id.indexOf(post._id)!=-1){
+                <i class='bx bxs-bookmark bx-sm' (click)="postSaved(post._id)"></i>
+            }
+            @else{
+                <i class='bx bx-bookmark bx-sm' (click)="postSaved(post._id)"></i>
+            }</span>
+        </div>
+
+        <!-- <i class='bx bxs-heart'></i>  -->
+    </div>
+    }
+    }
+    @else{
+    <div class="post">
+        <div class="post-user">
+            <div class="post-user-flw">
+                <div class="profile">
+                    <img src="data:{{post.user.profile_ext}};base64,{{post.user.profile_img}}">
+
+                </div>
+                <div class="post-username">
+                    <h4>{{post.user.username}}
+
+                        <span class="follow">
+                           
+                            @if(friends_id.indexOf(post.user._id)!=-1){
+                            <h4 (click)="follow(post.user._id) ">.Following</h4>
+                            }
+                            @else if(post.user._id!=userid){
+                            <h4 (click)="follow(post.user._id)">.Follow</h4>
+                            }
+                            @else{
+                            @if(post.user._id!=userid){
+                            <span class="follow">
+                                <h4 (click)="follow(post.user._id) ">.Follow</h4>
+                            </span>
+
+                            }
+                            }
+                        </span>
+
+                    </h4>
+                    <h5>{{post.date| date}}</h5>
+                </div>
+
+            </div>
+            <div class="more-options" (click)="seeoptions()"><i class='bx bx-dots-vertical-rounded bx-sm'></i>
+                <div class="options" [class]="more_options?moreoptions:''">
+                    <div class="option"><a href="assets/images/user3.jpg" download><span><i
+                                    class='bx bxs-download'></i></span>download</a></div>
+                    <div class="option"><span><i class='bx bx-share-alt'></i></span>share</div>
+
+                </div>
+            </div>
+
+        </div>
+        <hr>
+        <div class="post-content">
+            {{post.text}}
+        </div>
+        <div class="post-img">
+            @if(post.post_type=="video/mp4"){
+            <video src="data:{{post.post_type}};base64,{{post.post_image}}" controls></video>
+            }
+            @else{
+            <img src="data:{{post.post_type}};base64,{{post.post_image}}" alt="">
+            }
+        </div>
+        <div class="cmnt-save-like">
+            <div class="cmnt-like"><span (click)="addLike(post._id)">
+                @if(user_liked_posts.indexOf(post._id)!=-1){
+                    <i class='bx bxs-heart bx-sm' style="color: rgb(217,24,24);"></i>
+                    }
+                    @else{
+                        <i class='bx bx-heart bx-sm' ></i>
+                    }{{post.liked_Users}}</span>
+                        <span (click)="addComment(post._id)"><i
+                        class='bx bx-comment bx-sm' (click)="addComment(post._id)"></i>{{post.comments}}
+                </span></div>
+            <span (click)="postSaved(post._id)"><i class='bx bxs-bookmark bx-sm'></i></span>
+        </div>
+
+        <!-- <i class='bx bxs-heart'></i>  -->
+    </div>
+    }
+    @if(commentsView){
+    <div class="post-comments">
+        <div class="play-video">
+            <div class="video">
+                @if(requestedPost.post_type=="video/mp4"){
+                <video src="data:{{requestedPost.post_type}};base64,{{requestedPost.post_image}}" controls autoplay
+                    loop></video>
+                }
+                @else{
+                <img src="data:{{requestedPost.post_type}};base64,{{requestedPost.post_image}}" alt="">
+                }
+            </div>
+        </div>
+        <div class="comments">
+
+            <div class="post-user">
+                <div class="post-user-flw">
+                    <div class="profile">
+                        <img src="data:{{requestedPost.user.profile_ext}};base64,{{requestedPost.user.profile_img}}">
+
+                    </div>
+                    <div class="post-username">
+                        <h4>{{requestedPost.user.username}}
+                         
+                            <span class="follow">
+                                
+                                    @if(friends_id.indexOf(requestedPost.user._id)!=-1){
+                                    <h4 (click)="follow(requestedPost.user._id) ">.Following</h4>
+                                    }
+                                    @else if(requestedPost.user._id!=userid){
+                                    <h4 (click)="follow(requestedPost.user._id)">.Follow</h4>
+                                    }
+                                    
+                                    @else{
+                                    @if(requestedPost.user._id!=userid){
+                                    <span class="follow">
+                                        <h4 (click)="follow(requestedPost.user._id) ">.Follow</h4>
+                                    </span>
+        
+                                    }
+                                    }
+                            </span>
+                        </h4>
+                    </div>
+
+                </div>
+                <div class="cross" (click)="comments()"><span><i class='bx bx-x bx-sm'></i></span></div>
+            </div>
+            <hr>
+            <div class="comment-replay">
+                @for(comment of requestedPost.comments;track comment;let ci=$index){
+                <div class="comment">
+                    <div class="comment_profile">
+                        <img
+                            src="data:{{comment.comment_user.profile_ext}};base64,{{comment.comment_user.profile_img}}">
+                    </div>
+                    <div class="comment_body">
+                        <p>{{comment.comment_user.username}}<span
+                                (click)="deleteComment(requestedPost.comments[ci]._id)"><i
+                                    class='bx bx-trash'></i></span></p>
+                        <p>{{comment.date}}</p>
+                        <p>{{comment.comment}}</p>
+                        <div class="replay-box">
+                            <input type="text" placeholder="replay..." name="replay" #replay><button type="submit"
+                                (click)="addReplays(requestedPost.comments[ci]._id,replay.value)"><i
+                                    class='bx bx-send'></i></button>
+                        </div>
+                        @for(replay of requestedPost.comments[ci].replays;track replay;let ri=$index){
+                        <div class="replay">
+                            <div class="replay_profile">
+                                <img
+                                    src="data:{{replay.replay_user.profile_ext}};base64,{{replay.replay_user.profile_img}}">
+
+                            </div>
+                            <div class="replay_body">
+                                <p>{{replay.replay_user.username}}<span
+                                        (click)="deleteReplay(requestedPost.comments[ci]._id,requestedPost.comments[ci].replays[ri]._id)"><i
+                                            class='bx bx-trash'></i></span></p>
+                                <p>{{replay.date}}</p>
+                                <p>{{replay.replay}}</p>
+                            </div>
+                        </div>
+                        }
+
+                    </div>
+                </div>
+                }
+                @empty{
+                NO Comments yet
+                }
+            </div>
+            <div class="comment-section">
+                <input type="text" placeholder="Comments..." [(ngModel)]="uploadingComment"> <button
+                    (click)="addComments(requestedPost._id)"><i class='bx bx-send'></i></button>
+            </div>
+        </div>
+    </div>
+    }
+    }
+</div>

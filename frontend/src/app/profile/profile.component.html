@@ -1,0 +1,314 @@
+
+    <div class="container">
+    
+        <div class="cover-picture">
+            <div class="picture"><img src="data:{{userProfile.profile_ext}};base64,{{userProfile.profile_img}}" alt=""></div>
+    
+            <div class="go-back" [routerLink]="['/home']"><span><i class='bx bx-x '></i></span></div>
+    
+        </div>
+    
+    
+        <div class="profile-image">
+            <div class="image">
+                <div class="profile">
+                    <img src="data:{{userProfile.profile_ext}};base64,{{userProfile.profile_img}}">
+                </div>
+                <div class="username">
+                    <h2>{{userProfile.username}}</h2>
+                    <!-- <h4>5 friends</h4> -->
+                </div>
+            </div>
+            <div class="edit-profile">
+                <button (click)="show_edit()"><i class='bx bxs-edit-alt bx-sm'></i></button>
+            </div>
+        </div>
+        <hr>
+        <div class="main-contents">
+            <div class="filter">
+                <a (click)="show_post()">posts</a>
+                <a (click)="show_edit()">edit-profile</a>
+                <a (click)="show_friends()">friends</a>
+                <a (click)="show_saved()">saved</a>
+            </div>
+            <div class="contents">
+    
+                <div [class]="post?showpost:''">
+                    @for(post of userPosts;track userPosts;let i=$index){
+                    <div class="post">
+                        <div class="post-user">
+                            <div class="post-user-img">
+                                <div class="profile">
+                                    <img src="data:{{userProfile.profile_ext}};base64,{{userProfile.profile_img}}">
+    
+                                </div>
+                                <div class="post-username">
+                                    <h4>{{post.user.username}}</h4>
+                                    <h5>{{post.date| date}}</h5>
+                                </div>
+    
+                            </div>
+                            <div class="more-options" (click)="seeoptions()"><i
+                                    class='bx bx-dots-vertical-rounded bx-sm'></i>
+                                <div class="options" [class]="more_options?moreoptions:''">
+                                    <div class="option"><a href="data:{{post.post_type}};base64,{{post.post_image}}"
+                                            download><span><i class='bx bxs-download'></i></span>download</a></div>
+                                    <div class="option"><span><i class='bx bx-share-alt'></i></span>share</div>
+    
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="post-content">
+                            {{post.text}}
+                        </div>
+                        <div class="post-img">
+                            @if(post.post_type=="video/mp4"){
+                            <video src="data:{{post.post_type}};base64,{{post.post_image}}" controls></video>
+                            }
+                            @else{
+                            <img src="data:{{post.post_type}};base64,{{post.post_image}}" alt="hii">
+                            }
+                        </div>
+                        <div class="cmnt-save-like">
+                            <div class="cmnt-like"><span><i
+                                        class='bx bx-heart bx-sm'></i>{{post.liked_Users}}</span><span><i
+                                        class='bx bx-comment bx-sm' (click)="addComment(post._id)"></i>{{post.comments}}
+                                </span></div>
+                            <span><i class='bx bx-bookmark bx-sm'></i></span>
+                        </div>
+    
+                    </div>
+    
+    
+                    }
+                </div>
+    
+    
+                <div [class]="saved?showpost:''">
+                    @for(post of savedPost;track savedPost;let i=$index){
+                    <div class="post">
+                        <div class="post-user">
+                            <div class="post-user-img">
+                                <div class="profile">
+                                    <img src="data:{{post.user.profile_ext}};base64,{{post.user.profile_img}}">
+    
+                                </div>
+                                <div class="post-username">
+                                    <div class="post-username">
+                                        <h4>{{post.user.username}}
+                                            <span class="follow">
+                                               
+                                                @if(friends_id.indexOf(post.user._id)!=-1){
+                                                <h4 (click)="follow(post.user._id) ">.Following</h4>
+                                                }
+                                                @else if(post.user._id!=userid){
+                                                <h4 (click)="follow(post.user._id)">.Follow</h4>
+                                                }
+                                                
+                                                @else{
+                                                @if(post.user._id!=userid){
+                                                <span class="follow">
+                                                    <h4 (click)="follow(post.user._id) ">.Follow</h4>
+                                                </span>
+    
+                                                }
+                                                }
+                                            </span>
+                                        </h4>
+                                        <h5>{{post.date| date}}</h5>
+                                    </div>
+    
+                                </div>
+    
+                            </div>
+                            <div class="more-options" (click)="seeoptions()"><i
+                                    class='bx bx-dots-vertical-rounded bx-sm'></i>
+                                <div class="options" [class]="more_options?moreoptions:''">
+                                    <div class="option"><a href="data:{{post.post_type}};base64,{{post.post_image}}"
+                                            download><span><i class='bx bxs-download'></i></span>download</a></div>
+                                    <div class="option"><span><i class='bx bx-share-alt'></i></span>share</div>
+    
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="post-content">
+                            {{post.text}}
+                        </div>
+                        <div class="post-img">
+                            @if(post.post_type=="video/mp4"){
+                            <video src="data:{{post.post_type}};base64,{{post.post_image}}" controls></video>
+                            }
+                            @else{
+                            <img src="data:{{post.post_type}};base64,{{post.post_image}}" alt="hii">
+                            }
+                        </div>
+                        <div class="cmnt-save-like">
+                            <div class="cmnt-like"><span><i
+                                        class='bx bx-heart bx-sm'></i>{{post.liked_Users}}</span><span><i
+                                        class='bx bx-comment bx-sm' (click)="addComment(post._id)"></i>{{post.comments}}
+                                </span></div>
+                            <span><i class='bx bx-bookmark bx-sm'></i></span>
+                        </div>
+    
+                    </div>
+                    }
+                    @empty{
+                    <h4>No posts</h4>
+                    }
+                </div>
+                @if(commentsView){
+                <div class="post-comments">
+                    <div class="play-video">
+                        <div class="video">
+                            @if(requestedPost.post_type=="video/mp4"){
+                            <video src="data:{{requestedPost.post_type}};base64,{{requestedPost.post_image}}" controls
+                                autoplay loop></video>
+                            }
+                            @else{
+                            <img src="data:{{requestedPost.post_type}};base64,{{requestedPost.post_image}}" alt="">
+                            }
+                        </div>
+                    </div>
+                    <div class="comments">
+    
+                        <div class="post-user">
+                            <div class="post-user-flw">
+                                <div class="profile">
+                                    <img
+                                        src="data:{{requestedPost.user.profile_ext}};base64,{{requestedPost.user.profile_img}}">
+    
+                                </div>
+                                <div class="post-username">
+                                    <h4>{{requestedPost.user.username}}
+    
+                                        <span class="follow">
+                                           
+                                            @if(friends_id.indexOf(requestedPost.user._id)!=-1){
+                                            <h4 (click)="follow(requestedPost.user._id) ">.Following</h4>
+                                            }
+                                            @else if(requestedPost.user._id!=userid){
+                                            <h4 (click)="follow(requestedPost.user._id)">.Follow</h4>
+                                            }
+                                            
+                                            @else{
+                                            @if(requestedPost.user._id!=userid){
+                                            <span class="follow">
+                                                <h4 (click)="follow(requestedPost.user._id) ">.Follow</h4>
+                                            </span>
+    
+                                            }
+                                            }
+                                        </span>
+    
+                                    </h4>
+                                </div>
+    
+                            </div>
+                            <div class="cross" (click)="comments()"><span><i class='bx bx-x bx-sm'></i></span></div>
+                        </div>
+                        <hr>
+                        <div class="comment-replay">
+                            @for(comment of requestedPost.comments;track comment;let ci=$index){
+                            <div class="comment">
+                                <div class="comment_profile">
+                                    <img
+                                        src="data:{{comment.comment_user.profile_ext}};base64,{{comment.comment_user.profile_img}}">
+                                </div>
+                                <div class="comment_body">
+                                    <p>{{comment.comment_user.username}}<span
+                                            (click)="deleteComment(requestedPost.comments[ci]._id)"><i
+                                                class='bx bx-trash'></i></span></p>
+                                    <p>{{comment.date}}</p>
+                                    <p>{{comment.comment}}</p>
+                                    <div class="replay-box">
+                                        <input type="text" placeholder="replay..." name="replay" #replay><button
+                                            type="submit"
+                                            (click)="addReplays(requestedPost.comments[ci]._id,replay.value)"><i
+                                                class='bx bx-send'></i></button>
+                                    </div>
+                                    @for(replay of requestedPost.comments[ci].replays;track replay;let ri=$index){
+                                    <div class="replay">
+                                        <div class="replay_profile">
+                                            <img
+                                                src="data:{{replay.replay_user.profile_ext}};base64,{{replay.replay_user.profile_img}}">
+    
+                                        </div>
+                                        <div class="replay_body">
+                                            <p>{{replay.replay_user.username}}<span
+                                                    (click)="deleteReplay(requestedPost.comments[ci]._id,requestedPost.comments[ci].replays[ri]._id)"><i
+                                                        class='bx bx-trash'></i></span></p>
+                                            <p>{{replay.date}}</p>
+                                            <p>{{replay.replay}}</p>
+                                        </div>
+                                    </div>
+                                    }
+    
+                                </div>
+                            </div>
+                            }
+                            @empty{
+                            NO Comments yet
+                            }
+                        </div>
+                        <div class="comment-section">
+                            <input type="text" placeholder="Comments..." [(ngModel)]="uploadingComment"> <button
+                                (click)="addComments(requestedPost._id)"> <i class='bx bx-send'></i></button>
+                        </div>
+                    </div>
+                </div>
+                }
+    
+                <div [class]="friends?showpost:''">
+    
+                    <div class="received-request">
+                        <h3> Friends</h3>
+    
+                        <div class="friend-requests" [class]="userFriends.length>=5?align:''">
+                            @for(friend of userFriends;track userFriends;let i=$index){
+                            <div class="request">
+                                <div class="user-img">
+                                    <img src="data:{{friend.profile_ext}};base64,{{friend.profile_img}}" alt="">
+                                </div>
+                                <div class="body">
+                                    <h4>{{friend.username}}</h4>
+                                    <button (click)="delete_friend(friend._id)">unfollow</button>
+                                </div>
+                            </div>
+                            }
+                            @empty{
+                            <h4>No friends</h4>
+                            }
+                        </div>
+    
+                    </div>
+    
+    
+                </div>
+                <div [class]="edit?showpost:''">
+                    <div class="edit">
+                        <div class="edit-cover-picture">
+                            <img [src]="profile_pic" alt="">
+                        </div>
+                        <div class="edit-profile-picture">
+                            <img [src]="profile_pic" alt="">
+                        </div>
+                        <div class="edit-images">
+                            <!-- <button>Edit Cover photo <input type="file"></button> -->
+                            <button>Edit profile photo <input type="file" (change)="uploadpic($event)"></button>
+                        </div>
+    
+                        <div class="edit-details">
+                            <input type="text" placeholder="change name" [(ngModel)]="user_name">
+                            <!-- <input type="email" placeholder="change email"> -->
+                            <button (click)="update_profile()">submit</button>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+    
+        </div>
+    </div>
+    

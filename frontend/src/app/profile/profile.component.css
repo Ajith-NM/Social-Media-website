@@ -1,0 +1,616 @@
+.container {
+    width: 95%;
+    min-height: 200vh;
+    max-height: fit-content;
+    border-radius: 5px;
+    padding: 2% 10%;
+    margin: 10px auto;
+    background-color: var(--active);
+}
+.waiting{
+    text-align: left;
+    color: brown;
+    background-color: black;
+}
+.cover-picture {
+    width: 100%;
+    height: 550px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+   
+}
+
+.container .go-back {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    overflow: hidden;
+    color: var(--icon-color);
+    font-size: 35px;
+    transition: .3s;
+}
+
+.container .go-back:hover {
+    transform: scale(1.2);
+}
+
+.cover-picture img,
+.profile-image .profile img,
+.post .post-user .profile img,
+.post .post-img img,
+.friend-requests .request .user-img img,
+.post .post-img video,
+.edit .edit-cover-picture img,
+.edit-profile-picture img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.container .profile-image{
+display: flex;
+align-items: center;
+
+position: relative;
+}
+.container .profile-image .image{
+    display: flex;
+align-items: center;
+}
+.profile-image .profile{
+ width: 150px;
+ height: 150px;
+ overflow: hidden;
+ border-radius: 50%;
+ border: 3px solid aliceblue;
+ margin: -50px 20px 20px 20px;
+}
+.profile-image .username{
+    margin-top: -38px;
+}
+.profile-image .username h2{
+    color: var(--text-color);
+    margin-bottom: 5px;
+    text-transform: capitalize;
+}
+.profile-image .username h4{
+    color: var(--icon-color);
+}
+.profile-image .edit-profile{
+   width: 36px;
+   height: 30px;
+   transform: translateY(-30px);
+   
+}
+.profile-image .edit-profile button{
+    background-color: transparent;
+    color: var(--icon-color);
+}
+.main-contents{
+    padding: 15px;
+    height: max-content;
+}
+.main-contents .filter{
+display: flex;
+align-items: center;
+justify-content: space-around;
+height: 40px;
+border: 2px solid var(--border);
+
+}
+.main-contents .filter a{
+    color: var(--text-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+.contents{
+    width: 100%;
+    padding: 3% 10%;
+    color: var(--text-color); 
+   
+}
+.showpost{
+    display: none;
+}
+.post {
+    
+   padding: 15px;
+    margin: 20px 0;
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+}
+
+.post .post-user {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.post .post-user .profile {
+    width: 44px;
+    height: 44px;
+    margin: 1px;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+}
+.post .post-user .post-user-img {
+    display: flex;
+    align-items: center;
+}
+
+.post .post-user .post-username {
+    margin-left: 15px;
+    padding: 2px;
+    color: var(--icon-color);
+}
+
+.post .post-user .post-username h4 {
+    color: var(--text-color);
+    text-transform: capitalize;
+    /* display: flex; */
+}
+
+.post .post-user .post-username h5 {
+    color: var(--icon-color);
+}
+
+.post .post-user .follow h4 {
+    font-weight: 500;
+    color: rgb(11, 59, 168);
+    margin-left: 5px;
+    cursor: pointer;
+    /* transform: translateY(-7px); */
+}
+
+.post .post-user .more-options {
+    transform: translatey(-7px);
+    margin-right: 10px;
+    position: relative;
+    color: var(--icon-color);
+}
+
+.post .post-user .options {
+    position: absolute;
+    display: flex;
+    padding: 0 10px;
+    flex-direction: column;
+    width: 0px;
+    height: 0px;
+    border-radius: 5px 0 5px 5px;
+    transform: translateX(-90%);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+    overflow: hidden;
+    background-color: var(--box-color);
+}
+
+.post .post-user .see-options {
+    width: 127px;
+    height: 80px;
+}
+
+.post .post-user .options .option span {
+    color: var(--icon-color);
+}
+
+.post .post-user .options .option,
+.post .post-user .options .option a {
+    display: flex;
+    column-gap: 10px;
+    margin: 5px 0px;
+    color: var(--text-color);
+}
+
+.post .post-content {
+    color: var(--text-color);
+    margin: 20px 10px;
+}
+
+.post .post-img {
+    /* width: 766px; */
+    width: 100%;
+    height: 480px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.post .post-img video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    overflow: clip;
+}
+
+.post .cmnt-save-like {
+    display: flex;
+    color: var(--text-color);
+    justify-content: space-between;
+}
+
+.post .cmnt-save-like .cmnt-like {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post .cmnt-save-like span i {
+    color: var(--icon-color);
+    transform: translateY(5px);
+    margin-right: 5px;
+}
+
+.post .cmnt-save-like .cmnt-like span,
+.post .cmnt-save-like span {
+    margin: 10px 30px;
+}
+.contents .received-request h3{
+    padding-left: 5px;
+}
+.contents .align{
+    justify-content: center;
+}
+.contents .friend-requests{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(190px,200px));
+    gap: 10px;
+     padding: 15px 5px;
+     min-height: 45vh;
+    max-height: fit-content;
+ }
+ .friend-requests .request{
+     height: 265px;
+     /* padding: 2px; */
+     overflow: hidden;
+     border-radius: 5px;
+     display:flex;
+     flex-direction:column;
+     gap: 5px;
+     border: 2px solid var(--border);
+     background-color:var(--box-color);
+ }
+ .friend-requests .request .user-img{
+ width: 100%;
+ height: 200px;
+ }
+ .friend-requests .request .body{
+     display:flex;
+     flex-direction:column;
+     gap: 5px;
+     padding: 0 8px;
+ }
+ .friend-requests .request .body button{
+   width: 100%;
+   height: 25px;
+   border-radius: 5px;
+   color: aliceblue;
+ }
+ .friend-requests .request .body button:nth-child(2){
+     /* background-color:  #119c8e; */
+     background-color: rgb(251, 102, 102);
+ }
+.edit{
+    margin: 10px auto;
+    padding:4% ;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background-color: var(--box-color);
+}
+.edit .edit-cover-picture{
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+}
+.edit .edit-profile-picture{
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative;
+    border: 3px solid aliceblue;
+    margin: 0 auto;
+    margin-top: -50px;
+    
+    
+}
+.edit .edit-images{
+height: 30px;
+display: flex;
+width: max-content;
+margin: 10px auto;
+overflow: hidden;
+}
+.edit .edit-images button{
+    text-align: center;
+    position: relative;
+    width: 150px;
+    border: 2px solid var(--border);
+    margin-left: 10px;
+    border-radius: 10px;
+    background-color:var(--active);
+color: var(--text-color);
+overflow: hidden;
+
+}
+.edit .edit-images button input[type="file"]{
+    position: absolute;
+    z-index: 3;
+    transform: scale(2);
+    opacity: 0;
+left: 134px;
+}
+.edit .edit-images button input[type="file"]::-webkit-file-upload-button {
+    cursor: pointer;
+}
+ .edit .edit-details{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 400px;
+    margin: 10px auto;
+ }
+ .edit .edit-details input{
+    margin: 10px 0;
+    width: 100%;
+    background: var(--nav-icon-bg-color);
+    padding: 10px;
+    outline: none;
+    border: 0;
+    border-radius: 10px;
+
+ }
+ .edit .edit-details input::content {
+    padding-left: 23px;
+    font-weight: 500;
+   color: var(--text-color);
+   border: 2px solid var(--border);
+}
+
+
+
+
+.post-comments {
+    border-radius: 5px;
+    /* width: 94%; */
+    position:fixed;
+    top: 7%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+    padding: 1% 9%;
+    margin: auto;
+   
+    background-color: var(--box-color);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    z-index: 80;
+}
+
+.post-comments .play-video {
+    width: 45%;
+    overflow: hidden;
+    padding: 2% 6%;
+    
+    border-right: 1px solid var(--nav-icon-bg-color);
+}
+.post-comments .play-video .video{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.post-comments .play-video video,
+.post-comments .play-video img{
+ width: 100%;
+height: 100%;
+object-fit: contain;
+    overflow-clip-margin: content-box; 
+    overflow: clip;
+}
+.post-comments .comments{
+    width: 55%;
+    position: relative;
+    
+}
+.post-comments .comments .comment-replay{
+    width: 100%;
+    height: 70vh;
+    overflow-y: scroll;
+}
+.comments .comment-replay::-webkit-scrollbar{
+    width: 0px;
+}
+.post-comments .comments .comment-section{
+    
+    display: flex;
+    align-items: center;
+    width: 100%;
+    
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    background-color:var(--box-color);
+}
+.post-comments .comments .comment-section input{
+width: 90%;
+margin: 5px 0px;
+height:40px;
+border-radius: 20px;
+background-color:var(--nav-icon-bg-color);
+}
+.post-comments .comments .comment-section input::content{
+    padding-left: 20px;
+    color: var(--text-color);
+}
+.post-comments .comments .comment-section button{
+    background-color: transparent;
+    text-align: center;
+    font-size: 30px;
+    width: 35px;
+    height: 35px;
+    margin-left: 5px;
+    color: var(--icon-color);
+    /* transform: translateY(-3px);   */
+}
+ .post-user {
+margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-user .post-user-flw {
+    display: flex;
+    align-items: center;
+}
+.post-user .post-user-flw .profile{
+    width: 44px;
+    height: 44px;
+    margin: 1px;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+}
+ .post-user .post-username {
+    margin-left: 15px;
+    padding: 2px;
+    color: var(--icon-color);
+}
+
+ .post-user .post-username h4 {
+    color: var(--text-color);
+    font-weight: 600;
+    text-transform: capitalize;
+    display: flex;
+}
+.post-user .follow h4 {
+    font-weight: 500;
+    color: rgb(11, 59, 168);
+    margin-left: 5px;
+    cursor: pointer;
+    
+}
+
+.post-user .cross{
+    transform: translatey(-7px);
+    margin-right: 5px;
+    position: relative;
+    color: var(--icon-color);
+    transition: .3s;
+    cursor: pointer;
+}
+.post-user .cross:hover{
+    
+    transform: scale(1.2);
+}
+.comment,
+.comments .comment .comment_body .replay {
+    display: grid;
+    grid-template-columns: 70px auto;
+    color: var(--text-color);
+}
+
+.comments .comment .comment_profile {
+    margin: 10px auto;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50px;
+}
+
+.comments .comment .comment_profile img,
+.comments .comment .comment_body .replay .replay_profile img ,
+.post-user .post-user-flw .profile img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+ 
+.comments .comment .comment_body p:nth-child(1) span{
+    margin-left: 15px;
+    color: var(--icon-color);
+    cursor: pointer;
+}
+.comments .comment .comment_body p:nth-child(1) {
+    margin: 10px 0px 5px;
+    color: var(--text-color);
+}
+.comments .comment .comment_body p:nth-child(2){
+    color: var(--icon-color);
+font-size: smaller;
+}
+.comments .comment .comment_body p:nth-child(3) {
+    margin: 15px 0px;
+  color: var(--text-color);
+}
+.comments .comment .comment_body input {
+    margin: 5px 0px;
+    width: 250px;
+    height: 25px;
+    background-color:var(--nav-icon-bg-color);
+    border-radius: 10px;
+
+}
+
+.comments .comment .comment_body input::content {
+    padding-left: 20px;
+    color: var(--text-color);
+    
+}
+
+.comments .comment .comment_body button {
+    background-color: transparent;
+    text-align: center;
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    margin-left: 5px;
+    color: var(--icon-color);
+    transform: translateY(3px);
+    cursor: pointer;
+}
+
+.comments .comment .comment_body .replay .replay_profile {
+    margin: 10px auto;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50px;
+
+}
+
+.comments .comment .comment_body .replay .replay_body {
+    font-size: 13px;
+}
+@media(max-width:1310px){
+    .container {
+    padding: 2%;    
+    }
+    .cover-picture{
+        height: 400px;
+    }
+}
+@media(max-width:788px){
+    .cover-picture{
+        height: 250px;
+    }
+    .edit .edit-details{
+        width: 95%;
+        
+    }
+}
